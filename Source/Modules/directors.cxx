@@ -284,7 +284,7 @@ void Swig_director_emit_dynamic_cast(Node *n, Wrapper *f) {
     dirname = Language::instance()->directorClassName(parent);
     dirdecl = NewStringf("%s *darg = 0", dirname);
     Wrapper_add_local(f, "darg", dirdecl);
-    Printf(f->code, "darg = dynamic_cast<%s *>(arg1);\n", dirname);
+    Printf(f->code, "darg = static_cast<%s *>(arg1);\n", dirname);
     Delete(dirname);
     Delete(dirdecl);
   }
